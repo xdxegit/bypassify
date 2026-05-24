@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@utility geist{
+    font-family: 'Geist Mono', monospace;
+    
+}
+@utility inkmute{
+    color: #8b88a8;
+}
+@utility inkmute-line{
+  border: 1px solid rgba(60, 55, 120, 0.14);
+}
+
+@theme{
+  --font-gmono: 'Geist', monospace;
+  --color-inkmute: #8b88a8;
+}
+
+*{
+  font-family: var(--font-gmono);
+  box-sizing: border-box;
+}
+.container{
+
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: left;
+ overflow: hidden;
+}
+@utility mask-fade-right {
+  mask-image: linear-gradient(90deg, #000 0, #000 92%, transparent 100%);
+}
+.copy svg{
+  width: 13px; height: 13px;
+}
+.dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: conic-gradient(from 180deg, #c8b8ff, #b8d8ff, #ffd0e0, #c0f0d8, #c8b8ff);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.6), 0 4px 10px -2px rgba(120,100,220,0.35);
+}
+
+
+.corners{
+  background:
+    radial-gradient(1200px 800px at 12% 8%,  #E8E0FF 0%, transparent 55%),
+    radial-gradient(1100px 800px at 92% 18%, #DCEAFF 0%, transparent 55%),
+    radial-gradient(900px 700px  at 78% 92%, #FFE5EF 0%, transparent 55%),
+    radial-gradient(1000px 900px at 6% 88%,  #E0F4EC 0%, transparent 55%),
+    linear-gradient(180deg, #FFFFFF 0%, #FAFAFF 100%);
+}
+.corners::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: conic-gradient(from 0deg at 50% 50%,
+    rgba(232, 224, 255, .45),
+    rgba(220, 234, 255, .45),
+    rgba(255, 229, 239, .45),
+    rgba(224, 244, 236, .45),
+    rgba(232, 224, 255, .45));
+  filter: blur(80px);
+  mix-blend-mode: screen;
+  opacity: .7;
+  animation: drift 38s linear infinite;
+}
+.corners::after {
+  content: "";
+  background:
+    radial-gradient(60% 50% at 30% 30%, rgba(255,255,255,.9), transparent 70%),
+    radial-gradient(50% 40% at 70% 70%, rgba(255,255,255,.7), transparent 70%);
+  animation: breathe 14s ease-in-out infinite;
+}
+
+.shimmer {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%222%22/></filter></svg>");
+}
+
+.config-item{
+  transition: background 160ms ease;
+ 
+}
+
+
+.freeConfigs-list {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.configs-list {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+@keyframes drift   { 0% { transform: rotate(0)   scale(1.15); }
+                  100% { transform: rotate(360deg) scale(1.15); } }
+@keyframes breathe { 0%, 100% { opacity: .85; } 50% { opacity: .55; } }
